@@ -1,4 +1,3 @@
-
 #include <iostream>
 int main() {
     double a, b, c, x, x2;
