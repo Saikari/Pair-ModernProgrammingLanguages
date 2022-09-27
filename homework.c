@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <random>
+#include <chrono>
 void getmax(const int * array, const unsigned * size, int * max)
 {
     *max = array[0];
@@ -54,10 +56,20 @@ void sortasc(int * array, const unsigned * size)
                 array[i] = array[j],
                 array[j] = temp;
 }
-void fillvec(int * array, const unsigned * size)
+void fillvec(int * array, const unsigned * size, int * from, int * to)
 {
+    while (*from >= *to) {
+        printf("\nВведите начальный предел генерирования чисел");
+        scanf_s("%i", &(*from));
+        printf("\nВведите конечный предел генерирования чисел");
+        scanf_s("%i", &(*to));
+        if (*from >= *to)
+            printf("Недопустимый предел генерирования чисел от %i до %i", *from, *to);
+    }
+    std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());
+    std::uniform_int_distribution<int> distribution(*from, *to);
     for (unsigned i = 0; i < *size; ++i)
-        array[i] = rand() % 20;
+        array[i] = distribution(generator);
 }
 void printvec(const int * array, const unsigned * size)
 {
@@ -65,31 +77,30 @@ void printvec(const int * array, const unsigned * size)
         printf(i % 5 != 0 ? "%i " : "\n%i ", array[i]);
 }
 int main() {
-    srand(time(NULL));
     unsigned n;
     printf("Введите размерность вектора случайных чисел ");
-    scanf("%u", &n);
-    int x[n], max, min;
+    scanf_s("%u", &n);
+    int x[n], max, min, from, to;
     double avg;
-    fillvec(&x,&n);
-    printvec(&x,&n);
-    getmax(&x,&n,&max);
+    fillvec(x,&n, &from, &to);
+    printvec(x,&n);
+    getmax(x,&n,&max);
     printf("\nМаксимальный элемент вектора = %i", max);
-    getmin(&x,&n,&min);
+    getmin(x,&n,&min);
     printf("\nМинимальный элемент вектора = %i", min);
-    getavg(&x,&n,&avg);
+    getavg(x,&n,&avg);
     printf("\nСредний элемент вектора = %lf", avg);
     unsigned oddscount; int oddssum;
     unsigned evenscount; int evenssum;
-    getodds(&x,&n,&oddscount, &oddssum);
+    getodds(x,&n,&oddscount, &oddssum);
     printf("\nКоличество чётных элементов вектора = %u\tСумма чётных элементов вектора = %i", oddscount, oddssum);
-    geteven(&x,&n,&evenscount,&evenssum);
+    geteven(x,&n,&evenscount,&evenssum);
     printf("\nКоличество нечётных элементов вектора = %u\tСумма нечётных элементов вектора = %i", evenscount, evenssum);
-    sortasc(&x,&n);
+    sortasc(x,&n);
     printf("\nВектор отсортированный по-возрастанию");
-    printvec(&x,&n);
-    sortdesc(&x,&n);
+    printvec(x,&n);
+    sortdesc(x,&n);
     printf("\nВектор отсортированный по-убыванию");
-    printvec(&x,&n);
+    printvec(x,&n);
     return 0;
 }
