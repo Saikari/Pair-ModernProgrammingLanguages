@@ -3,11 +3,7 @@
 #include <random>
 #include <chrono>
 #include <string>
-#include <algorithm>
 #include <sstream>
-#include <cmath>
-#include <functional>
-#include <numeric>
 std::vector<int> cipher(std::vector<int>* messages)
 {
 	std::vector<int> ciphered{};
@@ -46,10 +42,7 @@ std::vector<int> decipher(std::vector<int>* messagesCiphered)
 	}
 	return ciphered;
 }
-//int summaryVec(std::vector<size_t> v)
-//{
-//    return std::accumulate(v.begin(), v.end(), 0);
-//}
+
 
 int f(int, int);
 
@@ -63,13 +56,7 @@ int f(int k, int n) {
 	else
 		return l(k, n, k);
 }
-void print_vector(const std::vector<int>& array) {
-	for (const int item : array)
-	{
-		std::cout << item << " ";
-	}
-	std::cout << std::endl;
-}
+
 
 
 void print(std::vector<std::vector<int>> output) {
