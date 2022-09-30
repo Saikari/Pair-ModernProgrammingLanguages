@@ -33,7 +33,8 @@ std::vector<int> decipher(std::vector<int>* messagesCiphered)
 		std::swap(messageString[1], messageString[3]);
 		for (char number : messageString)
 		{
-			number = 7.0 + number - 10.0 * floor((7.0 - number) / 10.0);
+			number = std::to_string(7.0 + number - 10.0 * 
+				floor((7.0 - number) / 10.0))[0];
 		}
 
 		int cipheredNumber = 0;
@@ -63,7 +64,7 @@ void print(std::vector<std::vector<int>> output) {
 	for (int i = 0; i < output.size(); i++) {
 		do {
 			for (int j = 0; j < output[i].size(); j++) {
-				std::wcout << output[i][j] << "\t";
+				std::wcout << output[i][j] << (j != output[i].size() - 1 ? L" -> " : L"");
 			}
 			std::wcout << std::endl;
 		} while (std::next_permutation(output[i].begin(), output[i].end()));
@@ -107,7 +108,7 @@ int main() {
 	std::wcout.imbue(std::locale::locale(".866"));
 	std::wcin.imbue(std::locale::locale(".866"));
 	std::vector<int> messages{};
-	int size = 10;
+	unsigned size = 10;
 	std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());
 	std::uniform_int_distribution<int> distribution(1000, 9999);
 	for (unsigned i = 0; i < size; ++i)
