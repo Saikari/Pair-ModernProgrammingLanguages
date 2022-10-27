@@ -1,0 +1,5 @@
+﻿  Ciphering.cpp
+  ConsoleApplication4.cpp
+C:\ConsoleApplication4\ConsoleApplication4\ConsoleApplication4.cpp(23,19): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
+  Generating Code...
+  ConsoleApplication4.vcxproj -> C:\ConsoleApplication4\x64\Debug\ConsoleApplication4.exe
