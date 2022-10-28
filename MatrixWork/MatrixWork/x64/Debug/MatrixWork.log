@@ -1,0 +1,14 @@
+﻿  Matrix.cpp
+C:\Users\Administrator\source\repos\MatrixWork\MatrixWork\Matrix.h(20,97): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
+          with
+          [
+              _Rep=std::chrono::system_clock::rep
+          ]
+  MatrixWork.cpp
+C:\Users\Administrator\source\repos\MatrixWork\MatrixWork\Matrix.h(20,97): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
+          with
+          [
+              _Rep=std::chrono::system_clock::rep
+          ]
+  Generating Code...
+  MatrixWork.vcxproj -> C:\Users\Administrator\source\repos\MatrixWork\x64\Debug\MatrixWork.exe
